@@ -1,4 +1,9 @@
-const HomePage = () => {
+const HomePage = ({ setFile, setAudioStream }) => {
+  const handleFileUpload = (e) => {
+    const tempFile = e.target.files[0];
+    setFile(tempFile);
+  };
+
   return (
     <main className="flex-1 p-4 flex flex-col gap-3 sm:gap-4 md: gap-5 justify-center text-center pb-20">
       <h1 className="font-semibold text-5xl sm:text-6xl md:text-7xl">
@@ -14,9 +19,9 @@ const HomePage = () => {
       <p className="text-base">
         Or{' '}
         <label className="text-blue-400 cursor-pointer hover:text-blue-600 duration-200">
-          upload <input className="hidden" type="file" accept=".mp3, .wav" />
+          upload <input onChange={handleFileUpload} className="hidden" type="file" accept=".mp3, .wav" />
         </label>{' '}
-        a mp3 file
+        a mp3 or wav file
       </p>
       <p className="italic text-slate-500">Free now free forever</p>
     </main>
