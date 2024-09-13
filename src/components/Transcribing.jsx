@@ -1,5 +1,3 @@
-import React from 'react';
-
 const Transcribing = ({ downloading }) => {
   return (
     <div className="flex items-center flex-col justify-center gap-10 md:gap-14 pb-24 p-4 text-center flex-1">
@@ -9,7 +7,7 @@ const Transcribing = ({ downloading }) => {
         </h1>
         <p>{!downloading ? 'warming up cylinders' : 'core cylinders engaged'}</p>
       </div>
-      <div className="flex flex-col gap-2 sm:gap-4 max-w-[400px] mx-auto w-full">
+      <div className="flex flex-col gap-2 sm:gap-3 max-w-[400px] mx-auto w-full">
         {[0, 1, 2].map((val) => {
           return <div key={val} className={'rounded-full h-2 sm:h-3 bg-slate-400 loading ' + `loading${val}`}></div>;
         })}

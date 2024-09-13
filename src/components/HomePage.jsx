@@ -11,6 +11,7 @@ const HomePage = ({ setFile, setAudioStream }) => {
 
   const startRecording = async () => {
     let tempStream;
+    setRecordingStatus('active');
     console.log('Start recording');
 
     try {
@@ -24,8 +25,6 @@ const HomePage = ({ setFile, setAudioStream }) => {
       console.log(error.message);
       return;
     }
-
-    setRecordingStatus('active');
 
     // create new Media recorder instance using the stream
     const media = new MediaRecorder(tempStream, { type: mimeType });
