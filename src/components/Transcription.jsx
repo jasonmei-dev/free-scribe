@@ -1,7 +1,9 @@
 import React from 'react';
 
-const Transcription = () => {
-  return <div>Transcription</div>;
+const Transcription = ({ output }) => {
+  const finalText = output.map((val) => val.text);
+
+  return <div>{finalText}</div>;
 };
 
 export default Transcription;
