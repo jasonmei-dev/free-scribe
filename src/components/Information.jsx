@@ -4,6 +4,11 @@ import Translation from './Translation';
 
 const Information = ({ output }) => {
   const [tab, setTab] = useState('transcription');
+  const [translation, setTranslation] = useState(null);
+  const [translating, setTranslating] = useState(null);
+  const [toLanguage, setToLanguage] = useState('Select language');
+
+  const textElement = tab === 'transcription' ? output.map((val) => val.text) : '';
 
   const handleCopy = () => {
     navigator.clipboard.writeText();
@@ -18,6 +23,8 @@ const Information = ({ output }) => {
     element.click();
   };
 
+  const generateTranslation = () => {};
+
   return (
     <main className="flex-1 p-4 flex flex-col gap-3 sm:gap-4 justify-center text-center pb-20 max-w-prose w-full mx-auto">
       <h1 className="font-semibold text-4xl sm:text-5xl md:text-6xl whitespace-nowrap">
@@ -31,7 +38,21 @@ const Information = ({ output }) => {
           Translation
         </button>
       </div>
-      <div className="my-8 flex flex-col">{tab === 'transcription' ? <Transcription output={output} /> : <Translation />}</div>
+      <div className="my-8 flex flex-col">
+        {tab === 'transcription' ? (
+          <Transcription textElement={textElement} />
+        ) : (
+          <Translation
+            textElement={textElement}
+            translation={translation}
+            toLanguage={toLanguage}
+            translating={translating}
+            setTranslating={setTranslating}
+            setTranslation={setTranslation}
+            setToLanguage={setToLanguage}
+          />
+        )}
+      </div>
       <div className="flex items-center gap-4 mx-auto">
         <button onClick={handleCopy} title="Copy" className="bg-white hover:text-blue-500 duration-200 text-blue-300 p-2 rounded px-2 aspect-square grid place-items-center">
           <i className="fa-solid fa-copy"></i>
