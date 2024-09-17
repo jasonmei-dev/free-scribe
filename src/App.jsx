@@ -42,7 +42,7 @@ function App() {
           break;
         case 'RESULT':
           setOutput(e.data.results);
-          console.log(e.data.results);
+          console.log('RESULT: ', e.data.results);
           break;
         case 'INFERENCE_DONE':
           setFinished(true);

@@ -1,4 +1,5 @@
 import { pipeline, env } from '@xenova/transformers';
+// import { pipeline } from '@xenova/transformers';
 import { MessageTypes } from './presets';
 
 // Disable local models
@@ -15,7 +16,6 @@ class MyTranscriptionPipeline {
         progress_callback,
       });
     }
-    console.log(this.instance);
     return this.instance;
   };
 }
